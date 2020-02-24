@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinterest</title>
+    <!-- El Layout de pinterest es muy dificil de lograr solo con css, pero con gridLayout va a ser mucho mas facil de replicar. -->
     <style>
+        /* El core de nuestro layout */
         .container{
+            /*  */
             display: grid;
+            /* Vamos a hacer que el contenido sea responsivo, si queremos que las columnas respeten al espacio que tengas disponible y si no hay espacio para que esas columnas se esten apilando uno al costado de la otra y hagan una dispocision como de bajada lo podemos configurar con el auto-fill */
             grid-template-columns: repeat(auto-fill, 250px);
+            /* espaciado entre las columnas */
             grid-gap: 5px;
+            /* Centrar nuestra cuadricula */
             justify-content: center;
 
         }
+        /* Vamos a darle el look and feel de pinterest */
         .item{
+            /* borde circular en las puntas */
             border-radius: 5px;
+            /* Para que las imagenes no queden pegadas a su contenedor */
             padding: 10px;
+            /* color de fondo  */
             background: #f2f2f2;
         }
+        /* Vamos a darle a las imagenes en general un ancho maximo del 100% de su contenedor */
         .item img{
             max-width: 100%;   
         }
+        /* Si yo quiero decirle que su inicio sea dinamico que sea donde esta puesto o donde grid lo decida por su apilacion para que encuentre su lugar adecuado yo simplemente deberia configurar el grid-row-end y no configurarle el grid-row-start, asi que ese es le truco que vamos a utilizar ahora.  */
         .level-1{
             grid-row-end:span 3;
         }
@@ -33,6 +45,7 @@
     </style>
 </head>
 <body>
+    <!-- Lo primero que vamos hacer es ocuparnos es de nuestro contenido -->
     <div class="container">
         <div class="item level-1">
             <img src="landing.jpg" alt="">
